@@ -75,17 +75,14 @@
     xhr.onload = function(){
         if(this.status === 200){
             const response = JSON.parse(this.responseText);
-            console.log(response.results[0]);
-            nextProfile(response.results[0]);
+            console.log(response);
+            
             let output= '';
-            if(response.type === 'success'){
-                response.value.forEach(function(name){
-                    output += `<li> ${name.name} </li>`;
-                });
-                document.querySelector('.jokes').innerHTML =output;
+            if(response.info.results === 1){
+                nextProfile(response.results[0]);
 
             } else {
-                output += '<li>something Went wrong </li>';
+                //output += '<li>something Went wrong </li>';
             }
         }
     };
